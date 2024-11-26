@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChatMeerKatModuleTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+653b0db1b2e15f5d4165ead6470619b8b7eecf05")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a5be92aa7454ac96f35ca50fbfb0eabdacf4e87")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChatMeerKatModuleTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChatMeerKatModuleTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

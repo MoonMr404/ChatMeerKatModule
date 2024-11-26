@@ -82,9 +82,18 @@ namespace ChatModule
                     Disconnect();
                     break;
                 }
-
                 SendMessage(message);
             }
         }
+        
+        static void Main(string[] args)
+        {
+            Console.Write("Inserisci il tuo nome utente: ");
+            string username = Console.ReadLine();
+
+            ChatClient chatClient = new ChatClient("127.0.0.1", 5000, username);
+            chatClient.Start();
+        }
     }
+    
 }
