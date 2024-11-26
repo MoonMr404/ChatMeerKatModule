@@ -5,115 +5,46 @@ using System.Threading;
 
 public class ChatClient
 {
-    private string username;
     private TcpClient client;
     private NetworkStream stream;
+    private string username;
 
-    public ChatClient(string username)
+    // Costruttore che inizializza il client e la connessione al server
+    public ChatClient(string serverAddress, int port, string username)
     {
+        client = new TcpClient(serverAddress, port);
+        stream = client.GetStream();
         this.username = username;
+
+        // Avvia un thread per ricevere i messaggi dal server
+        Thread receiveThread = new Thread(ReceiveMessages);
+        receiveThread.Start();
     }
 
-    public void Connect(string serverAddress, int port)
+    // Metodo per inviare i messaggi al server
+    public void SendMessage(string message)
     {
-        try
-        {
-            client = new TcpClient(serverAddress, port);
-            stream = client.GetStream();
-
-            Console.WriteLine($"Connesso al server {serverAddress}:{port}");
-
-            // Invia il nome utente al server
-            SendMessage(username);
-
-            // Avvia un thread per ricevere i messaggi
-            Thread receiveThread = new Thread(ReceiveMessages);
-            receiveThread.Start();
-
-            // Gestisce l'invio di messaggi
-            SendMessages();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Errore durante la connessione: {ex.Message}");
-        }
+        string fullMessage = $"{username}: {message}";
+        byte[] data = Encoding.UTF8.GetBytes(fullMessage);
+        stream.Write(data, 0, data.Length);
     }
 
-    private void SendMessages()
-    {
-        Console.WriteLine("Puoi iniziare a scrivere messaggi. Digita 'exit' per uscire.");
-        while (true)
-        {
-            string message = Console.ReadLine();
-
-            if (message?.ToLower() == "exit")
-            {
-                CloseConnection();
-                break;
-            }
-
-            SendMessage(message);
-        }
-    }
-
-    private void SendMessage(string message)
-    {
-        try
-        {
-            byte[] data = Encoding.UTF8.GetBytes(message);
-            stream.Write(data, 0, data.Length);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Errore durante l'invio del messaggio: {ex.Message}");
-        }
-    }
-
+    // Metodo per ricevere i messaggi dal server
     private void ReceiveMessages()
     {
-        try
+        byte[] buffer = new byte[1024];
+        int byteCount;
+        while ((byteCount = stream.Read(buffer, 0, buffer.Length)) > 0)
         {
-            while (true)
-            {
-                byte[] buffer = new byte[1024];
-                int byteCount = stream.Read(buffer, 0, buffer.Length);
-                string message = Encoding.UTF8.GetString(buffer, 0, byteCount);
-
-                Console.WriteLine(message);
-            }
-        }
-        catch (Exception)
-        {
-            Console.WriteLine("Connessione chiusa dal server.");
-            CloseConnection();
+            string message = Encoding.UTF8.GetString(buffer, 0, byteCount);
+            Console.WriteLine(message); // Stampa i messaggi ricevuti sulla console
         }
     }
 
-    private void CloseConnection()
+    // Metodo per chiudere la connessione al server
+    public void CloseConnection()
     {
-        stream?.Close();
-        client?.Close();
-        Console.WriteLine("Connessione chiusa.");
-        Environment.Exit(0);
-    }
-
-    public static void Main(string[] args)
-    {
-        Console.Write("Inserisci il tuo nome utente: ");
-        string username = Console.ReadLine();
-
-        Console.Write("Inserisci l'indirizzo del server (default: 127.0.0.1): ");
-        string serverAddress = Console.ReadLine();
-        if (string.IsNullOrEmpty(serverAddress))
-        {
-            serverAddress = "127.0.0.1";
-        }
-
-        Console.Write("Inserisci la porta del server (default: 8888): ");
-        string portInput = Console.ReadLine();
-        int port = string.IsNullOrEmpty(portInput) ? 8888 : int.Parse(portInput);
-
-        ChatClient client = new ChatClient(username);
-        client.Connect(serverAddress, port);
+        stream.Close();
+        client.Close();
     }
 }
