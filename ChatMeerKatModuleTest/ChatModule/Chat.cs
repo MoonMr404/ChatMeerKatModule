@@ -16,7 +16,7 @@ public class Chat
     public void AddMessage(Message message)
     {
         messages.Add(message);
-        Console.WriteLine($"{message.Sender}:,{message},{message.TimeStamp}");
+        Console.WriteLine($"{message.Sender}:,{message},{message.Timestamp}");
         BroadcastMessage(message.ToString());
     }
     

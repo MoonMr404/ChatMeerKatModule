@@ -66,6 +66,6 @@ public class ChatServer
 
         // Disconnessione dell'utente
         user.Disconnect();
-        chat.DisplayChatHistory();
+        //chat.DisplayChatHistory();
     }
 }
