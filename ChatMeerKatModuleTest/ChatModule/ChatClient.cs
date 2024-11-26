@@ -3,48 +3,88 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
-public class ChatClient
+namespace ChatModule
 {
-    private TcpClient client;
-    private NetworkStream stream;
-    private string username;
-
-    // Costruttore che inizializza il client e la connessione al server
-    public ChatClient(string serverAddress, int port, string username)
+    public class ChatClient
     {
-        client = new TcpClient(serverAddress, port);
-        stream = client.GetStream();
-        this.username = username;
+        private TcpClient tcpClient;
+        private NetworkStream networkStream;
+        private string username;
 
-        // Avvia un thread per ricevere i messaggi dal server
-        Thread receiveThread = new Thread(ReceiveMessages);
-        receiveThread.Start();
-    }
-
-    // Metodo per inviare i messaggi al server
-    public void SendMessage(string message)
-    {
-        string fullMessage = $"{username}: {message}";
-        byte[] data = Encoding.UTF8.GetBytes(fullMessage);
-        stream.Write(data, 0, data.Length);
-    }
-
-    // Metodo per ricevere i messaggi dal server
-    private void ReceiveMessages()
-    {
-        byte[] buffer = new byte[1024];
-        int byteCount;
-        while ((byteCount = stream.Read(buffer, 0, buffer.Length)) > 0)
+        public ChatClient(string ipAddress, int port, string username)
         {
-            string message = Encoding.UTF8.GetString(buffer, 0, byteCount);
-            Console.WriteLine(message); // Stampa i messaggi ricevuti sulla console
+            this.username = username;
+            tcpClient = new TcpClient(ipAddress, port);
+            networkStream = tcpClient.GetStream();
         }
-    }
 
-    // Metodo per chiudere la connessione al server
-    public void CloseConnection()
-    {
-        stream.Close();
-        client.Close();
+        // Metodo per inviare il nome utente al server
+        public void SendUsername()
+        {
+            byte[] data = Encoding.UTF8.GetBytes(username);
+            networkStream.Write(data, 0, data.Length);
+        }
+
+        // Metodo per inviare un messaggio al server
+        public void SendMessage(string message)
+        {
+            byte[] data = Encoding.UTF8.GetBytes(message);
+            networkStream.Write(data, 0, data.Length);
+        }
+
+        // Metodo per ricevere i messaggi dal server
+        public void ReceiveMessages()
+        {
+            byte[] buffer = new byte[1024];
+
+            while (true)
+            {
+                try
+                {
+                    int byteCount = networkStream.Read(buffer, 0, buffer.Length);
+                    if (byteCount == 0)
+                        break;
+
+                    string message = Encoding.UTF8.GetString(buffer, 0, byteCount);
+                    Console.WriteLine(message);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Errore nella ricezione del messaggio: {ex.Message}");
+                    break;
+                }
+            }
+        }
+
+        // Metodo per chiudere la connessione
+        public void Disconnect()
+        {
+            networkStream.Close();
+            tcpClient.Close();
+        }
+
+        // Metodo per avviare il client
+        public void Start()
+        {
+            // Invio del nome utente al server
+            SendUsername();
+
+            // Avvio del thread per ricevere i messaggi
+            Thread receiveThread = new Thread(ReceiveMessages);
+            receiveThread.Start();
+
+            // Invio dei messaggi dal client
+            while (true)
+            {
+                string message = Console.ReadLine();
+                if (message.ToLower() == "exit")
+                {
+                    Disconnect();
+                    break;
+                }
+
+                SendMessage(message);
+            }
+        }
     }
 }
