@@ -1,8 +1,18 @@
-﻿namespace MeerKatChatAvalonia.ViewModels;
+﻿using MeerKatChatAvalonia.Models;
 
-public partial class MainWindowViewModel : ViewModelBase
+namespace MeerKatChatAvalonia.ViewModels
 {
-#pragma warning disable CA1822 // Mark members as static
-    public string Greeting => "Test";
-#pragma warning restore CA1822 // Mark members as static
+    public partial class MainWindowViewModel : ViewModelBase
+    {
+        public string Greeting => "Test";
+
+        // Aggiungi la proprietà CurrentUser di tipo User
+        public User CurrentUser { get; }
+
+        public MainWindowViewModel()
+        {
+            // Imposta un esempio di utente
+            CurrentUser = new User("john_doe", "John Doe");
+        }
+    }
 }
