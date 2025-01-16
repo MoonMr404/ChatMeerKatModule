@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MeerKatChatAvalonia")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa1a49e7d2916ef4c9dbdd19343e2a56505b93ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e54b5c0d70475204baab30a83c08d3afa926d14")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeerKatChatAvalonia")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeerKatChatAvalonia")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

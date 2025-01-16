@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/francesco/RiderProjects/ChatMeerKatModule/AvaloniaChatModule/MeerKatChatAvalonia/MeerKatChatAvalonia/MeerKatChatAvalonia.csproj": {}
+    "C:\\Users\\Francesco\\RiderProjects\\ChatMeerKatModule\\AvaloniaChatModule\\MeerKatChatAvalonia\\MeerKatChatAvalonia\\MeerKatChatAvalonia.csproj": {}
   },
   "projects": {
-    "/Users/francesco/RiderProjects/ChatMeerKatModule/AvaloniaChatModule/MeerKatChatAvalonia/MeerKatChatAvalonia/MeerKatChatAvalonia.csproj": {
+    "C:\\Users\\Francesco\\RiderProjects\\ChatMeerKatModule\\AvaloniaChatModule\\MeerKatChatAvalonia\\MeerKatChatAvalonia\\MeerKatChatAvalonia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/francesco/RiderProjects/ChatMeerKatModule/AvaloniaChatModule/MeerKatChatAvalonia/MeerKatChatAvalonia/MeerKatChatAvalonia.csproj",
+        "projectUniqueName": "C:\\Users\\Francesco\\RiderProjects\\ChatMeerKatModule\\AvaloniaChatModule\\MeerKatChatAvalonia\\MeerKatChatAvalonia\\MeerKatChatAvalonia.csproj",
         "projectName": "MeerKatChatAvalonia",
-        "projectPath": "/Users/francesco/RiderProjects/ChatMeerKatModule/AvaloniaChatModule/MeerKatChatAvalonia/MeerKatChatAvalonia/MeerKatChatAvalonia.csproj",
-        "packagesPath": "/Users/francesco/.nuget/packages/",
-        "outputPath": "/Users/francesco/RiderProjects/ChatMeerKatModule/AvaloniaChatModule/MeerKatChatAvalonia/MeerKatChatAvalonia/obj/",
+        "projectPath": "C:\\Users\\Francesco\\RiderProjects\\ChatMeerKatModule\\AvaloniaChatModule\\MeerKatChatAvalonia\\MeerKatChatAvalonia\\MeerKatChatAvalonia.csproj",
+        "packagesPath": "C:\\Users\\Francesco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Francesco\\RiderProjects\\ChatMeerKatModule\\AvaloniaChatModule\\MeerKatChatAvalonia\\MeerKatChatAvalonia\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/francesco/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Francesco\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -84,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.402/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

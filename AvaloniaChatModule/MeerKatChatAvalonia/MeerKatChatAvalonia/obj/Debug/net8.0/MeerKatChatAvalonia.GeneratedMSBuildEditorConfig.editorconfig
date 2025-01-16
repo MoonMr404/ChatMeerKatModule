@@ -15,12 +15,12 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MeerKatChatAvalonia
-build_property.ProjectDir = /Users/francesco/RiderProjects/ChatMeerKatModule/AvaloniaChatModule/MeerKatChatAvalonia/MeerKatChatAvalonia/
+build_property.ProjectDir = C:\Users\Francesco\RiderProjects\ChatMeerKatModule\AvaloniaChatModule\MeerKatChatAvalonia\MeerKatChatAvalonia\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[/Users/francesco/RiderProjects/ChatMeerKatModule/AvaloniaChatModule/MeerKatChatAvalonia/MeerKatChatAvalonia/App.axaml]
+[C:/Users/Francesco/RiderProjects/ChatMeerKatModule/AvaloniaChatModule/MeerKatChatAvalonia/MeerKatChatAvalonia/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/Users/francesco/RiderProjects/ChatMeerKatModule/AvaloniaChatModule/MeerKatChatAvalonia/MeerKatChatAvalonia/Views/MainWindow.axaml]
+[C:/Users/Francesco/RiderProjects/ChatMeerKatModule/AvaloniaChatModule/MeerKatChatAvalonia/MeerKatChatAvalonia/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
